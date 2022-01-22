@@ -37,7 +37,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
  * Created by cmt on 2017/9/28.
  */
 
-public class OkHttpUtils {
+public class OkHttpUtil {
     public final static int CONNECT_TIMEOUT = 15;
     public final static int READ_TIMEOUT = 15;
     public final static int WRITE_TIMEOUT = 15;
@@ -45,13 +45,13 @@ public class OkHttpUtils {
     private static OkHttpClient client = null;
     private static HttpLoggingInterceptor httpLoggingInterceptor;
 
-    private OkHttpUtils() {
+    private OkHttpUtil() {
 
     }
 
     public static OkHttpClient getInstance() {
         if (client == null) {
-            synchronized (OkHttpUtils.class) {
+            synchronized (OkHttpUtil.class) {
                 if (client == null)
                     client = new OkHttpClient().newBuilder().build();
             }
@@ -133,7 +133,7 @@ public class OkHttpUtils {
     public static OkHttpClient.Builder getBuilder(){
         //全信任证书模式，可能无法通过双向的证书验证
         TrustAllManager trustAllManager = new TrustAllManager();
-        SSLSocketFactory sslSocketFactory=OkHttpUtils.createTrustAllSSLFactory(trustAllManager);
+        SSLSocketFactory sslSocketFactory=OkHttpUtil.createTrustAllSSLFactory(trustAllManager);
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         builder.connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS);//设置连接超时间
         builder.writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS); //写操作超时时间

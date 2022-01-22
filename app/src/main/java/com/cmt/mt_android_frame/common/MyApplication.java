@@ -4,6 +4,12 @@ import android.app.Application;
 import android.content.Context;
 import android.util.Log;
 
+import androidx.annotation.Nullable;
+
+import com.orhanobut.logger.AndroidLogAdapter;
+import com.orhanobut.logger.BuildConfig;
+import com.orhanobut.logger.Logger;
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -19,6 +25,8 @@ public class MyApplication extends Application {
         context = getApplicationContext();
         //关闭android 9的弹框
         closeAndroidPDialog();
+        //开启日志记录
+        Logger.addLogAdapter(new AndroidLogAdapter());
     }
     public static Context getContext(){
         return context;

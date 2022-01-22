@@ -11,7 +11,7 @@ import android.view.WindowManager;
 import androidx.annotation.NonNull;
 
 import com.cmt.mt_android_frame.R;
-import com.cmt.mt_android_frame.utils.DensityUtils;
+import com.cmt.mt_android_frame.utils.DensityUtil;
 
 public class LoadingDialog extends Dialog {
     private Context context;
@@ -34,8 +34,8 @@ public class LoadingDialog extends Dialog {
         this.setCanceledOnTouchOutside(false);
         Window win = getWindow();
         WindowManager.LayoutParams lp = win.getAttributes();
-        lp.height = (int) (DensityUtils.dip2px(context,140));
-        lp.width = (int) (DensityUtils.dip2px(context,200));
+        lp.height = (int) (DensityUtil.dip2px(context,140));
+        lp.width = (int) (DensityUtil.dip2px(context,200));
         lp.dimAmount =0f;
         win.setAttributes(lp);
     }

@@ -8,7 +8,7 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.cmt.mt_android_frame.utils.AlertUtils;
+import com.cmt.mt_android_frame.utils.AlertUtil;
 
 import java.io.IOException;
 import java.net.ConnectException;
@@ -33,9 +33,9 @@ public class OnResponseIntercepter extends DisposableObserver<ResponseBody> {
                 Log.i(TAG,"请求api完毕");
                 if(context instanceof Activity){
                     if(!((Activity)context).isFinishing())
-                        AlertUtils.loadDissmiss();
+                        AlertUtil.loadDissmiss();
                 }else{
-                    AlertUtils.loadDissmiss();
+                    AlertUtil.loadDissmiss();
                 }
             }
             return true;
@@ -50,9 +50,9 @@ public class OnResponseIntercepter extends DisposableObserver<ResponseBody> {
             Log.i(TAG,"请求api完毕");
             if(context instanceof Activity){
                 if(!((Activity)context).isFinishing())
-                    AlertUtils.loadDissmiss();
+                    AlertUtil.loadDissmiss();
             }else{
-                AlertUtils.loadDissmiss();
+                AlertUtil.loadDissmiss();
             }
         }
         String result = "";
@@ -81,28 +81,28 @@ public class OnResponseIntercepter extends DisposableObserver<ResponseBody> {
             Log.i(TAG,"请求api完毕");
             if(context instanceof Activity){
                 if(!((Activity)context).isFinishing())
-                    AlertUtils.loadDissmiss();
+                    AlertUtil.loadDissmiss();
             }else{
-                AlertUtils.loadDissmiss();
+                AlertUtil.loadDissmiss();
             }
         }
         if(e instanceof SocketTimeoutException){
             Log.i(TAG,"SocketTimeoutException");
             responsePretreatListener.onFailed("Network connection timeout",400);//网络连接超时
 //            ErrorLogUtils.setLog(e.toString());
-            AlertUtils.toastAlert("Network connection timeout : 400");
+            AlertUtil.toastAlert("Network connection timeout : 400");
         }//请求超时
         else if (e instanceof ConnectException){
             Log.i(TAG,"网络连接超时");
             responsePretreatListener.onFailed("Network connection timeout",400);//网络连接超时
 //            ErrorLogUtils.setLog(e.toString());
-            AlertUtils.toastAlert("Network connection timeout : 400");
+            AlertUtil.toastAlert("Network connection timeout : 400");
         }
         else if(e instanceof SSLHandshakeException){
             Log.i(TAG,"SSL证书异常");
             responsePretreatListener.onFailed("Ssl certificate is abnormal",403);
 //            ErrorLogUtils.setLog(e.toString());/
-            AlertUtils.toastAlert("Ssl certificate is abnormal : 400");
+            AlertUtil.toastAlert("Ssl certificate is abnormal : 400");
         }
         else if(e instanceof HttpException){
             //获取错误码
@@ -172,7 +172,7 @@ public class OnResponseIntercepter extends DisposableObserver<ResponseBody> {
         //TODO 需要显示加载框的，看这里，自己实现
         if(context==null)return;
         if(!((Activity)context).isFinishing())
-        AlertUtils.getLoadingDialogInstance((Activity) context).show();
+        AlertUtil.getLoadingDialogInstance((Activity) context).show();
     }
 
 

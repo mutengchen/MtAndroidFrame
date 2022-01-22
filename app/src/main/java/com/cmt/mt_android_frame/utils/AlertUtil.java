@@ -13,7 +13,7 @@ import com.cmt.mt_android_frame.view.dailog.LoadingDialog;
 /* 提示控件
  * Created by cmt on 2019/7/5
  */
-public class AlertUtils {
+public class AlertUtil {
 
     private static LoadingDialog loadingDialog;
     public static LoadingDialog getLoadingDialogInstance(Context context){

@@ -5,7 +5,7 @@ import android.content.Context;
 import android.util.Log;
 
 
-import com.cmt.mt_android_frame.utils.AlertUtils;
+import com.cmt.mt_android_frame.utils.AlertUtil;
 
 import java.io.IOException;
 import java.net.ConnectException;
@@ -35,7 +35,7 @@ public class OnResponsNoAlertIntecepter extends DisposableObserver<ResponseBody>
         if(context!=null){
             Log.i(TAG,"请求api完毕");
             if(!((Activity)context).isFinishing())
-                AlertUtils.loadDissmiss();
+                AlertUtil.loadDissmiss();
         }
         String result = "";
         try {
@@ -58,7 +58,7 @@ public class OnResponsNoAlertIntecepter extends DisposableObserver<ResponseBody>
      */
     @Override
     public void onError(Throwable e) {
-        AlertUtils.loadDissmiss();
+        AlertUtil.loadDissmiss();
         if(e instanceof SocketTimeoutException){
             Log.i(TAG,"SocketTimeoutException");
             responsePretreatListener.onFailed("Network connection timeout",400);//网络连接超时
@@ -132,7 +132,7 @@ public class OnResponsNoAlertIntecepter extends DisposableObserver<ResponseBody>
         if(context==null)return;
 //        if(!((Activity)context).isFinishing())
         Log.i(TAG,"开始请求api了");
-        AlertUtils.getLoadingDialogInstance((Activity) context).show();
+        AlertUtil.getLoadingDialogInstance((Activity) context).show();
     }
 
 

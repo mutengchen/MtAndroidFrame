@@ -1,6 +1,6 @@
 package com.cmt.mt_android_frame.utils;
 
-public class ClickUtils {
+public class ClickUtil {
 
     private static final int MIN_DELAY_TIME= 100;  // 两次点击间隔不能少于1000ms
     private static long lastClickTime;

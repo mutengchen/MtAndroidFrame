@@ -18,6 +18,18 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    android.applicationVariants.all {
+        variant ->
+            variant.outputs.all {
+                //这里修改apk文件名
+                outputFileName = "${rootProject.ext.appApkName}-V${rootProject.ext.appVersionName} ${rootProject.ext.appPutliveDate} ${rootProject.ext.appEnv}.apk"
+            }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -33,7 +45,9 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
-
+    implementation 'org.jetbrains:annotations:15.0'
+    annotationProcessor 'org.androidannotations:androidannotations-api:4.1.0'
+    implementation 'org.androidannotations:androidannotations-api:4.1.0'
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
     //导入retrofit
     implementation 'com.google.code.gson:gson:2.6.2'
@@ -46,4 +60,20 @@ dependencies {
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
     //配合Rxjava 使用
     implementation 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+    //加载图像库
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+    //全局防止重复点击
+    implementation 'com.github.liys666666:DoubleClick:V2.0.6'
+    //加载动态图
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.1'
+    //eventbus
+    api 'org.greenrobot:eventbus:3.0.0'
+    //日志记录
+    implementation 'com.orhanobut:logger:2.2.0'
+    //基于rxjava的aop权限申请
+    compile 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar'
+
+    compile 'com.alibaba:fastjson:1.2.76'
+    //leakCanary内存检测工具
+//    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.3'
 }

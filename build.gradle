@@ -2,12 +2,16 @@
 
 buildscript {
     repositories {
+        maven { url 'http://maven.aliyun.com/repository/google' }
+        maven { url 'http://maven.aliyun.com/repository/jcenter' }
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
+        maven { url 'http://maven.aliyun.com/nexus/content/repositories/gradle-plugin' }
         google()
         jcenter()
         
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.3'
+        classpath 'com.android.tools.build:gradle:4.2.1'
         
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -16,12 +20,30 @@ buildscript {
 
 allprojects {
     repositories {
+        maven { url 'http://maven.aliyun.com/repository/google' }
+        maven { url 'http://maven.aliyun.com/repository/jcenter' }
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
+        maven { url 'http://maven.aliyun.com/nexus/content/repositories/gradle-plugin' }
         google()
         jcenter()
-        
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
     }
 }
-
+ext{
+    //apkName
+    appApkName="appName"
+    //上线日期
+    appPutliveDate="20220121"
+    //versionCode(建议每次改动都去手动增加版本号，或者是利用svn版本号去做版本号的自增，因为app内会根据这个code来决定是否清除上一次的ip地址配置)
+    appVersionCode = 20
+    //当前版本号，版本号规则为 x.x.x，x是字母和数字随意组合
+    appVersionName="1.0.16"
+    //当前app的环境（QA为测试环境apk,PRO为正式环境apk）
+    appEnv="QA"
+//    appEnv=""
+}
 task clean(type: Delete) {
     delete rootProject.buildDir
 }

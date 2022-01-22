@@ -18,7 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import com.cmt.mt_android_frame.utils.ClickUtils;
+import com.cmt.mt_android_frame.utils.ClickUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -88,7 +88,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         if(ev.getAction()==MotionEvent.ACTION_DOWN){
-            if(ClickUtils.isFastClick()){
+            if(ClickUtil.isFastClick()){
                 return true;
             }
         }
